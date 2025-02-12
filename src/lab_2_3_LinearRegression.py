@@ -154,14 +154,15 @@ def anscombe_quartet():
 
     # Anscombe's quartet consists of four datasets
     # Construct an array that contains, for each entry, the identifier of each dataset
-    datasets = np.array(["I", "II", "III", "IV"])
+    datasets_id = np.array(["I", "II", "III", "IV"])
 
+    datasets = []
     models = {}
     results = {"R2": [], "RMSE": [], "MAE": []}
-    for dataset in datasets:
-
+    for dataset in datasets_id:
         # Filter the data for the current dataset
         data = anscombe.loc[anscombe["dataset"] == dataset]
+        datasets.append(data)
 
         # Create a linear regression model
         model = LinearRegressor()
